@@ -12,22 +12,28 @@ class SettingScreen extends HookWidget {
     final homeImageType = useProvider(
         settingViewModelProvider.select((value) => value.homeImageType));
 
-    return Column(
-      children: [
-        DropdownButton<HomeImageType>(
-          value: homeImageType,
-          onChanged: (newValue) {
-            settingViewModel.homeImageType = newValue!;
-          },
-          items: HomeImageType.values
-              .map<DropdownMenuItem<HomeImageType>>((value) {
-            return DropdownMenuItem<HomeImageType>(
-              value: value,
-              child: Text(EnumToString.convertToString(value)),
-            );
-          }).toList(),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          Row(mainAxisSize: MainAxisSize.max,
+            children: [
+            const Text('home image size : '),
+            DropdownButton<HomeImageType>(
+              value: homeImageType,
+              onChanged: (newValue) {
+                settingViewModel.homeImageType = newValue!;
+              },
+              items: HomeImageType.values
+                  .map<DropdownMenuItem<HomeImageType>>((value) {
+                return DropdownMenuItem<HomeImageType>(
+                  value: value,
+                  child: Text(EnumToString.convertToString(value)),
+                );
+              }).toList(),
+            ),],),
+        ],
+      ),
     );
   }
 }
