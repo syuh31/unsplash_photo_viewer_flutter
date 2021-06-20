@@ -4,6 +4,7 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:unsplash_viewer_flutter/data/model/photo.dart';
+import 'package:unsplash_viewer_flutter/gen/assets.gen.dart';
 import 'package:unsplash_viewer_flutter/ui/loading_state_view_model.dart';
 import 'package:unsplash_viewer_flutter/foundation/extension/async_snapshot.dart';
 
@@ -66,10 +67,14 @@ class HomeScreen extends HookWidget {
       return Container();
     }
 
-    final card = FadeInImage.memoryNetwork(
-      placeholder: kTransparentImage,
-      image: photo.urls.thumb!,
-    );
+    final uri = Uri.parse(photo.urls.thumb!);
+
+    final card = (uri.scheme == 'https' || uri.scheme == 'http')
+        ? FadeInImage.memoryNetwork(
+            placeholder: kTransparentImage,
+            image: photo.urls.thumb!,
+          )
+        : Assets.image.noImage.image();
 
     return card;
   }
