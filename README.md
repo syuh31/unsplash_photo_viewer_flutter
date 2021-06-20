@@ -12,6 +12,7 @@ Flutterフレームワークを利用したスマホアプリです。
 クリーンアーキテクチャの考え方を踏襲し、基本的構造はMVVM、repositoryを使用する形にしています。
 
 ### 機能
+![unsplash_viewer_video](https://user-images.githubusercontent.com/41030516/122670679-2b1ab100-d1fe-11eb-8c88-f8054100b7bc.gif)
 * Unsplashより取得した写真を表示することができる
 * 画面回転により、写真を表示する個数を変更することができる
 * 設定画面より、ホーム画面で使用する写真のサイズを変更できる
